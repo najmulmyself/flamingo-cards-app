@@ -1,4 +1,6 @@
+import 'package:flamingo_app/const/app_constant.dart';
 import 'package:flamingo_app/core/theme/app_palate.dart';
+import 'package:flamingo_app/core/widget/common_appbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,11 +9,26 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      decoration: const BoxDecoration(
-        color: AppPallete.backgroundColor,
-      ),
-      child: const Text('Home Screen'),
-    ));
+        // appBar: const CommonAppBar(
+        //   title: "Choose your date",
+        // ),
+        body: Padding(
+          padding: AppConstant.screenPadding,
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: const Center(child: Text('Home Screen')),
+              ),
+            ],
+          ),
+        ));
   }
 }
