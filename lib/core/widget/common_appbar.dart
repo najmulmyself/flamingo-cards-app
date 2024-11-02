@@ -33,8 +33,6 @@
 //   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 // }
 
-
-
 import 'package:flutter/material.dart';
 
 class CommonSliverAppBar extends StatelessWidget {
@@ -46,13 +44,12 @@ class CommonSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SliverAppBar(
       floating: true,
-      backgroundColor: Color(0xFF0A2647),
+      backgroundColor: Color(0xffffffff),
       title: Text(
-        'Choose packs',
+        "Pair Play",
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
       leading: Icon(Icons.settings),
-      actions: [Icon(Icons.info_outline)],
     );
   }
 }

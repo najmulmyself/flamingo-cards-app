@@ -1,6 +1,4 @@
 import 'package:flamingo_app/const/app_constant.dart';
-import 'package:flamingo_app/core/theme/app_palate.dart';
-import 'package:flamingo_app/core/widget/common_appbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

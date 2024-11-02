@@ -9,7 +9,7 @@ class ChoosePacksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A2647),
+      backgroundColor: const Color(0xffffffff),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -37,7 +37,6 @@ class ChoosePacksScreen extends StatelessWidget {
                     }
 
                     final packs = snapshot.data!.docs;
-                    print("packs: ${packs.first.id}");
 
                     return SliverList(
                       delegate: SliverChildBuilderDelegate(
@@ -45,74 +44,27 @@ class ChoosePacksScreen extends StatelessWidget {
                           final pack = packs[index];
                           return GestureDetector(
                             onTap: () {
-                              // print(pack);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) =>  PlayGamesScreen(id: pack.id,)));
+                                      builder: (_) => PlayGamesScreen(
+                                        packs: pack,
+                                            id: pack.id,
+                                          )));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: PackCard(
                                 title: pack['title'] ?? "No Title",
                                 description: pack['desc'] ?? "No Description",
-                                color: const Color(0xFF5FBDFF),
-                                icon: '👥',
+                                color: Color(pack['color'] ?? Colors.redAccent),
+                                icon: pack['icon'] ?? '👥',
                               ),
                             ),
                           );
                         },
                         childCount: packs.length,
                       ),
-
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(
-                      //             builder: (_) => const PlayGamesScreen()));
-                      //   },
-                      //   child: const PackCard(
-                      //     title: 'Getting Closer',
-                      //     description:
-                      //         'Say goodbye to basic small talks and embrace meaningful conversations',
-                      //     color: Color(0xFF5FBDFF),
-                      //     icon: '👥',
-                      //   ),
-                      // ),
-                      // const SizedBox(height: 16),
-                      // const PackCard(
-                      //   title: 'Hot & Spicy',
-                      //   description:
-                      //       'Turn up the heat, explore secret fantasies, and ignite the passion',
-                      //   color: Color(0xFFFF69B4),
-                      //   icon: '🔥',
-                      // ),
-                      // const SizedBox(height: 16),
-                      // const PackCard(
-                      //   title: 'Love Talks',
-                      //   description:
-                      //       'Your guide to a happier relationship - speak truth, share past and future plans',
-                      //   color: Color(0xFFFF69B4),
-                      //   icon: '❤️',
-                      // ),
-                      // const SizedBox(height: 16),
-                      // const PackCard(
-                      //   title: 'Deep Dive!',
-                      //   description:
-                      //       'Deep conversation topics to get you thinking and talking!',
-                      //   color: Color(0xFF4169E1),
-                      //   icon: '🤔',
-                      // ),
-                      // const SizedBox(height: 16),
-                      // const PackCard(
-                      //   title: 'Would you rather',
-                      //   description:
-                      //       'Dive into fun dilemmas - good luck making those choices!',
-                      //   color: Color(0xFF8A2BE2),
-                      //   icon: '🤷',
-                      // ),
-                      // ),
                     );
                   }),
             ),
@@ -122,26 +74,6 @@ class ChoosePacksScreen extends StatelessWidget {
     );
   }
 }
-
-// class CommonSliverAppBar extends StatelessWidget {
-//   const CommonSliverAppBar({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SliverAppBar(
-//       floating: true,
-//       backgroundColor: Color(0xFF0A2647),
-//       title: Text(
-//         'Choose packs',
-//         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//       ),
-//       leading: Icon(Icons.settings),
-//       actions: [Icon(Icons.info_outline)],
-//     );
-//   }
-// }
 
 class PackCard extends StatelessWidget {
   final String title;

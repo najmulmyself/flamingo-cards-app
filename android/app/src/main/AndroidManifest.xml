@@ -2,7 +2,7 @@
 package="com.example.app"
 >
     <application
-        android:label="flamingo_app"
+        android:label="PairPlay"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
